@@ -1,0 +1,96 @@
+.display {
+  display: block;
+  margin-bottom: 15px;
+  padding: 10px;
+  background-color: #f0f0f0; /* Greyish white background color */
+  color: #333; /* Adjust text color as needed */
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Add a subtle shadow effect */
+  transition: transform 0.3s ease-in-out;
+  width: 1370px;
+  height: 80px;
+}
+
+
+.display:hover {
+  transform: scale(1.1);
+}
+
+.maininside {
+  display: flex;
+}
+
+.inside {
+  padding-right: 80px;
+  padding-left: 80px;
+}
+
+.box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+button {
+  border-radius: 5px;
+  padding: 2px;
+}
+
+h2{
+  color: black;
+  font-weight: 900;
+  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    text-align: center;
+    margin: 20px;
+    margin-top: 40px;
+  }
+
+.display button.block {
+  background-color: #545cb1;
+  color: white;
+  outline: none;
+  cursor: pointer;
+  /* font-weight: bold; */
+  border-radius: 3px;
+  border: 1px solid #3949AB;
+  transition: background-color 0.5s; /* Add transition for smooth color change */
+}
+
+.display button.block:hover {
+  background-color: red; /* Change to the desired hover color */
+}
+
+.display button.complete {
+  background-color: #545cb1;
+  color: white;
+  outline: none;
+  cursor: pointer;
+  /* font-weight: bold; */
+  border-radius: 3px;
+  border: 1px solid #3949AB;
+  transition: background-color 0.5s; /* Add transition for smooth color change */
+}
+
+.display button.complete:hover {
+  background-color: green; /* Change to the desired hover color */
+}
+
+
+/* Example CSS styles for Swal custom classes */
+.swal2-title-custom {
+  color: #4caf50; /* Change title color */
+}
+
+.swal2-content-custom {
+  color: #333; /* Change content color */
+}
+
+.swal2-confirm-button-custom {
+  background-color: #4caf50; /* Change confirm button background color */
+  color: white; /* Change confirm button text color */
+}
+
+.swal2-cancel-button-custom {
+  background-color: #f44336; /* Change cancel button background color */
+  color: white; /* Change cancel button text color */
+}

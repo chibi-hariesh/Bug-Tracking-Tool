@@ -1,0 +1,131 @@
+const pool = require('../db');
+const jwt = require('jsonwebtoken')
+const bcrypt = require('bcrypt')
+
+// tester Login
+const testerlogin = async (req, res) => {
+    try {
+        const { email, password } = req.body;
+
+        // Check if the user exists
+        const userQuery = `SELECT * FROM tester WHERE email = '${email}'`;
+        const result = await pool.query(userQuery);
+        const user = result.rows[0];
+
+        if (!user) {
+            // User not found
+            console.log("User not found");
+            res.status(401).send("Invalid email or password");
+            return;
+        }
+
+        // Compare the provided password with the hashed password from the database
+        const passwordMatch = await bcrypt.compare(password, user.password);
+
+        if (!passwordMatch) {
+            // Passwords do not match
+            console.log("Invalid password");
+            res.status(401).send("Invalid email or password");
+            return;
+        }
+
+        // Generate JWT with user data (excluding password) and set expiration to 7 days
+        const token = jwt.sign(
+            {
+                user_id: user.customer_id,
+                email: user.email,
+                full_name: user.full_name,
+            },
+            'qwertyuiop', // Replace with a strong secret key
+            { expiresIn: '7d' }
+        );
+
+        // Login successful, send the JWT as a response
+        console.log("Login successful");
+        res.send({
+            success: true,
+            message: "Login successfull",
+            user: {
+                tester_id: user.tester_id,
+                name: user.name,
+                email: user.email,
+            },
+            token
+        });
+    } catch (error) {
+        console.error(error);
+        res.status(500).send("Internal Server Error");
+    }
+};
+
+// get data
+const assigned_requests = async (req, res) => {
+    const { testerId } = req.params;
+    if (testerId) {
+        console.log(testerId)
+    }
+      try {
+        // Query to retrieve testing requests based on tester_id from request_acceptance table
+        const query = `
+          SELECT *
+          FROM testingrequest
+          WHERE customer_id IN (
+              SELECT customer_id
+              FROM request_acceptance
+              WHERE tester_id = $1
+          );
+        `;
+        const { rows } = await pool.query(query, [testerId]);
+
+        res.json(rows);
+      } catch (error) {
+        console.error('Error fetching testing requests:', error);
+        res.status(500).json({ error: 'Internal server error' });
+      }
+}
+
+// create bug
+
+const createbug = async (req, res) => {
+  try {
+    const { tester_id, summary, featureWorkflow, severity, stepsToReproduce } = req.body;
+    
+    // Check if tester_id exists in request body
+    if (!tester_id || typeof tester_id !== 'number') {
+      return res.status(400).json({ error: 'Invalid tester_id' });
+    }
+
+    // Fetch request details from request_acceptance table
+    const requestQuery = `
+      SELECT request_id, customer_id
+      FROM request_acceptance
+      WHERE tester_id = $1;
+    `;
+    const { rows } = await pool.query(requestQuery, [tester_id]);
+    console.log("retrived")
+    // Check if any rows were returned
+    if (rows.length === 0) {
+      return res.status(404).json({ error: 'No request found for the tester' });
+    }
+    
+    // Extract request_id and customer_id from the result
+    const { request_id, customer_id } = rows[0];
+
+    // Insert bug into database with status set to "Under Triage"
+    const bugQuery = `
+      INSERT INTO bug (request_id, customer_id, tester_id, summary, feature_workflow, severity, steps_to_reproduce, status, created_at)
+      VALUES ($1, $2, $3, $4, $5, $6, $7, $8, NOW())
+      RETURNING *;
+    `;
+    const bugValues = [request_id, customer_id, tester_id, summary, featureWorkflow, severity, stepsToReproduce, 'Under Triage'];
+    const { rows: createdBug } = await pool.query(bugQuery, bugValues);
+    
+    // Return the created bug
+    res.status(201).json(createdBug[0]);
+  } catch (error) {
+    console.error('Error creating bug:', error);
+    res.status(500).json({ error: 'Internal server error' });
+  }
+};
+
+module.exports = { testerlogin, assigned_requests, createbug};

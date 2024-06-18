@@ -1,0 +1,52 @@
+/* Tester_home.css */
+
+/* Style for the test-request card */
+.test-request {
+    width: 90%;
+    max-width: 600px;
+    margin: 30px;
+    padding: 20px;
+  }
+  
+  /* Style for the table within the test-request card */
+  .test-request table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 15px;
+  }
+  
+  /* Style for table rows */
+  .test-request tr {
+    border-bottom: 1px solid #ddd;
+  }
+  
+  /* Style for table cells */
+  .test-request td {
+    padding: 8px;
+    text-align: left;
+  }
+  
+  /* Style for table cell containing strong elements */
+  .test-request td strong {
+    font-weight: bold;
+  }
+  
+  /* Style for the button within the test-request card */
+  .test-request button {
+    display: block;
+    margin-top: 15px;
+  }
+  
+  /* Style for the no-test message */
+  .no-test {
+    text-align: center;
+    margin-top: 50px;
+  }
+
+  .content-container {
+    margin-top: 94px; /* Height of the Navbar (adjust as needed) */
+  }
+  
+  
+  
+  

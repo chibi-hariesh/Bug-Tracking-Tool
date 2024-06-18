@@ -1,0 +1,73 @@
+/* Manager_testers.css */
+
+h2{
+  color: black;
+  font-weight: 900;
+  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    text-align: center;
+    margin: 20px;
+    margin-top: 40px;
+  }
+  
+  .cards-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 20px;
+    width: 100%;
+  }
+  
+  .card {
+    width: 100%;
+    /* flex: 0 0 calc(33.333% - 40px); */
+    /* min-width: calc(33.333% - 40px); */
+    margin: 20px;
+    padding: 10px;
+    background-color: #f0f0f0;
+    color: #333;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out;
+  }
+  
+  .card:hover {
+    transform: scale(1.05);
+  }
+  
+  .buttons {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+  }
+  
+  button {
+    border-radius: 5px;
+    padding: 5px 10px;
+    margin-right: 10px;
+    cursor: pointer;
+  }
+  
+  button.accept {
+    background-color: #4caf50;
+    color: white;
+    border: none;
+  }
+  
+  button.reject {
+    background-color: #f44336;
+    color: white;
+    border: none;
+  }
+  
+  .assign-tester {
+    margin-top: 10px;
+  }
+  
+  select {
+    border-radius: 5px;
+    padding: 5px 10px;
+  }
+  
+  button:disabled {
+    background-color: grey;
+  }

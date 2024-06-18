@@ -1,0 +1,56 @@
+/* Add general styles for the table */
+table {
+    font-family: Arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+    margin-top: 20px;
+  }
+  
+  th, td {
+    border: 1px solid #dddddd;
+    padding: 8px;
+    text-align: left;
+  }
+  
+  /* Alternate row background color */
+  tr:nth-child(even) {
+    background-color: #f2f2f2;
+  }
+  
+  /* Style for the status text */
+  .status-closed,
+  .status-validated,
+  .status-under-triage {
+    color: green;
+  }
+  
+  .status-invalid,
+  .status-not-reproducible,
+  .status-need-more-info {
+    color: red;
+  }
+  
+  .status-under-triage {
+    color: orange;
+  }
+  
+  /* Style for action button */
+  .action-btn {
+    background-color: #4caf50;
+    border: none;
+    color: white;
+    padding: 8px 16px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 4px;
+  }
+  
+  .action-btn:disabled {
+    background-color: #aaaaaa;
+    cursor: not-allowed;
+  }
+  

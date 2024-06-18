@@ -1,0 +1,30 @@
+.table-container {
+  display: table;
+  width: 100%;
+}
+
+.filter-container {
+  padding-right: 50px;
+  display: flex;
+  justify-content: flex-end; /* Align items to the right */
+  align-items: center; /* Center vertically */
+}
+
+
+.header {
+  font-weight: bold;
+}
+
+/* Additional styling if needed */
+
+h2{
+  color: black;
+  font-weight: 900;
+  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+td{
+  padding: 5px;
+  font-family: Arial, Helvetica, sans-serif;
+  width: 400px;
+}

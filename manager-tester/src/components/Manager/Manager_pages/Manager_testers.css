@@ -1,0 +1,46 @@
+.tester-card {
+  background-color: #f8f9fa;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 30px 100px; /* Add padding for better spacing */
+  text-align: center; /* Center align content */
+}
+
+.tester-card:hover {
+  transform: translateY(-5px);
+}
+
+.tester-card .card-title {
+  font-size: 1.5rem; /* Increase font size for the tester name */
+  font-weight: bold; /* Bold font for better emphasis */
+  margin-bottom: 15px; /* Increase margin for better spacing */
+}
+
+.tester-card .card-text {
+  font-size: 1rem;
+  color: #6c757d;
+  margin-bottom: 10px; /* Increase margin for better spacing */
+}
+
+.status-green {
+  color: #28a745;
+}
+
+.status-red {
+  color: #dc3545;
+}
+
+@media (max-width: 768px) {
+  .tester-card {
+      max-width: 100%;
+  }
+}
+
+h2{
+	color: black;
+	font-weight: 900;
+	font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  text-align: center;
+  margin: 20px;
+  margin-top: 40px;
+}

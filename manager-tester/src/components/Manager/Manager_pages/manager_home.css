@@ -1,0 +1,27 @@
+.card-link {
+    text-decoration: none;
+    color: black;
+  }
+  
+  .card {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+  }
+  
+  .card-image {
+    width: 150px;
+    height: 150px;
+    object-fit: cover; /* Ensures the image fills the entire space */
+  }
+  
+  .MDBCardBody {
+    height: calc(100vh - 40px); /* Subtracting the margin of the rows */
+  }
+  
+  .row-cols-md-5 > * {
+    margin-bottom: 20px;
+  }
+  
